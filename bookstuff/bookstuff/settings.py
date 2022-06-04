@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'bookstuff.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'ENGINE': 'django.db.backends.postgresql',
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'somename',
         'USER': 'postgres',
-        'PASSWORD': 'somepassword',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'PASSWORD': 'somepw',
+        'HOST': 'localhost','PORT': 5432,
     }
 }
 
@@ -103,6 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 # AUTH_USER_MODEL = "ttest.CustomUser"
 REST_FRAMEWORK = {

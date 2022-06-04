@@ -7,9 +7,9 @@ from book_app import models as book_app_models
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from . import serializers #CustomUserSerializer, PostSerializer
+# from . import serializers
 
-from rest_framework_simplejwt import views as jwt_views
+#from rest_framework_simplejwt import views as jwt_views
 from django.db.utils import IntegrityError
 
 import datetime
