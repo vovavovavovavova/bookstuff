@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'somename',
         'USER': 'postgres',
-        'PASSWORD': 'somepw',
+        'PASSWORD': '*',
         'HOST': 'localhost','PORT': 5432,
     }
 }
@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# AUTH_USER_MODEL = "ttest.CustomUser"
+AUTH_USER_MODEL = "book_app.SupportStuff"
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',

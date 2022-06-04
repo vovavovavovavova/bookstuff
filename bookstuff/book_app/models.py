@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.postgres.fields import JSONField
 
 
 # Create your models here.
@@ -20,7 +21,7 @@ class Book(models.Model):
     
 class Offer(models.Model):
     title = models.CharField(max_length=50, null=False)
-    data = models.JsonField()
+    data = JSONField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     book_id = models.ForeignKey(Book, on_delete=models.CASCADE, null=False)

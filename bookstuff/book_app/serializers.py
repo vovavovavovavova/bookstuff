@@ -41,6 +41,9 @@ class BookSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+    def update(self, validated_data):
+        raise NotImplementedError
+
 
 class OfferSerializer(serializers.ModelSerializer):
     title = serializers.TextField(max_length=50, required=True)
