@@ -16,6 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf.urls import url, include
+from django.views.generic import TemplateView
+
+
+from book_app import urls as book_app_urls
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    url(r'^book_app/', include(book_app_urls, namespace = 'book_app')),
+    # url(r'^book_app/', TemplateView.as_view(template_name='blank.html')),
 ]
