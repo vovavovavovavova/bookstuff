@@ -16,7 +16,6 @@ class Book(models.Model):
     language = models.CharField(max_length=20)
     buy_price = models.FloatField()
     sell_price = models.FloatField()
-    
 
     
 class Offer(models.Model):

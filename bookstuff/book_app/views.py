@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
 from book_app import models as book_app_models
@@ -7,19 +6,21 @@ from book_app import models as book_app_models
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-# from . import serializers
+from . import serializers
 
-#from rest_framework_simplejwt import views as jwt_views
+from rest_framework_simplejwt import views as jwt_views
 from django.db.utils import IntegrityError
 
 import datetime
 import json
 import os
-import requests
+
+
 # Create your views here.
 # TODO: split instances for different files, from . import views as supp_views; 
 
-class SupportStuffCreate(APIView): # signup_user
+
+class SupportStuffCreate(APIView):  # signup_user
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format='json'):

@@ -1,4 +1,3 @@
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
 from . import models as my_models
 
@@ -23,7 +22,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    title = serializers.TextField(required=True)
+    title = serializers.CharField(required=True)
     author = serializers.CharField(min_length=5, max_length=100, required=True)
     language = serializers.CharField(max_length=20)
     buy_price = serializers.FloatField()
@@ -34,27 +33,24 @@ class BookSerializer(serializers.ModelSerializer):
         fileds = ('title', 'author', 'language', 'buy_price', 'sell_price')
         exclude = tuple()
 
-
     def create(self, validated_data):
-        #print('validated_data:', validated_data)
         instance = self.Meta.model(**validated_data)
         instance.save()
         return instance
 
-    def update(self, validated_data):
+    def update(self, instance, validated_data):
         raise NotImplementedError
 
 
 class OfferSerializer(serializers.ModelSerializer):
-    title = serializers.TextField(max_length=50, required=True)
-    data = serializers.serializers.JSONField()
+    title = serializers.CharField(max_length=50, required=True)
+    data = serializers.JSONField()
     book_id = serializers.RelatedField(read_only=True)
 
     class Meta:
         model = my_models.Offer
         fields = ('title', 'data', 'book_id')
         exclude = tuple()
-
 
     def create(self, validated_data):
         
@@ -64,7 +60,7 @@ class OfferSerializer(serializers.ModelSerializer):
 
 
 class OfferResolveSerializer(serializers.ModelSerializer):
-    status = serializers.TextField(required=True)
+    status = serializers.CharField(required=True)
     offer_id = serializers.RelatedField(read_only=True)
     support_stuff_id = serializers.RelatedField(read_only=True)
 
@@ -73,9 +69,7 @@ class OfferResolveSerializer(serializers.ModelSerializer):
         fields = ('status', 'offer_id', 'support_stuff_id')
         exclude = tuple()
 
-
     def create(self, validated_data):
-        
         instance = self.Meta.model(**validated_data)
         instance.save()
         return instance
